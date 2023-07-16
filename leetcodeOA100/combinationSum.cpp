@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-void f(vector<vector<int>>&ans,vector<int>&temp,int ind,int sum,int n.int k){
+void f(vector<vector<int>>&ans,vector<int>&temp,int ind,int sum,int n,int k){
     if(sum==n && temp.size()==k){
         ans.push_back(temp);
         return ;

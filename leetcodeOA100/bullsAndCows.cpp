@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-int getHints(string secret,string hints){
+string getHints(string secret,string guess){
     int n= secret.size();
-    int m= hints,size();
+    int m= guess.size();
     int bulls=0,cows=0;
     vector<int>g(10),s(10);
     for(int i=0;i<n;i++){
@@ -15,7 +15,8 @@ int getHints(string secret,string hints){
     for(int i=0;i<10;i++){
         cows +=min(g[i],s[i]);
     }
-    return to_String(bulls)+"A"+to_String(cows)+"B";
+     string ans= to_string(bulls)+"A"+to_string(cows)+"B";
+     return ans;
 }
 int main()
 {
