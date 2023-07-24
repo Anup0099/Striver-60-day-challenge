@@ -10,7 +10,7 @@ int f(string s1, string s2, int i, int j, vector<vector<int>> dp)
     if (dp[i][j] != -1)
         return dp[i][j];
     // ab hoga choice diagram;
-    if (s[i] == s[j])
+    if (s1[i] == s2[j])
     {
         return dp[i][j] = 1 + f(s1, s2, i - 1, j - 1, dp);
     }

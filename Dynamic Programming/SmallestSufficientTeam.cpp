@@ -1,4 +1,4 @@
-#include <bits/stdc++.h> 
+#include <bits/stdc++.h>
 using namespace std;
 // In a project, you have a list of required skills req_skills, and a list of people. The ith person people[i] contains a list of skills that the person has.
 
@@ -8,19 +8,21 @@ using namespace std;
 // Return any sufficient team of the smallest possible size, represented by the index of each person. You may return the answer in any order.
 
 // It is guaranteed an answer exists.
-vector<int>solve(vector<string>&req_skills,vector<vector<string>>&people,int ind,int n,vector<int>skill){
+vector<int> solve(vector<string> &req_skills, vector<vector<string>> &people, int ind, int n, vector<int> skill)
+{
     // using brute force recursion
     // base case
-    
-    
-
-    
 }
-vector<int>smallestSufficientTeam(vector<string>&req_skills,vector<vector<string>>&people){
-    int n= req_skills.size();
-    vector<int>skill(n);
-   return solve(req_skills,people,0,n-1,skill);
-
-    
-} 
-int main() {} 
+vector<int> smallestSufficientTeam(vector<string> &req_skills, vector<vector<string>> &people)
+{
+    int n = req_skills.size();
+    vector<int> skill(n);
+    return solve(req_skills, people, 0, n - 1, skill);
+}
+int main()
+{
+    cout << "hello";
+    int t;
+    cin >> t;
+    cout << t;
+}

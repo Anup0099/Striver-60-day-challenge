@@ -5,8 +5,8 @@ struct TreeNode{
     TreeNode *left;
     TreeNode *right;
     TreeNode(int x):val(x),left(NULL),right(NULL){}
-}
-TreeNode *lca(TreeNode *root,TreeNode *p.TreeNode *q){
+};
+TreeNode *lca(TreeNode *root,TreeNode *p,TreeNode *q){
     if(root==NULL || root==p || root==q)return root;
     TreeNode *left=lca(root->left,p,q);
     TreeNode *right=lca(root->right,p,q);

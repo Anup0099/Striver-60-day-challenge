@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+bool search(vector<int> &arr, int target)
+{
+    int n = arr.size();
+    int low = 0, high = n - 1;
+    while (low <= high)
+    {
+        int mid = (low + high) / 2;
+        if (arr[mid] == target)
+        {
+            return mid;
+        }
+        if (arr[mid] == arr[low] && arr[mid] == arr[high])
+        {
+            low++;
+            high--;
+            continue;
+        }
+
+        if (arr[low] <= arr[mid])
+        {
+            // left sorted
+            if (target >= arr[low] && target <= arr[mid])
+            {
+                high = mid - 1;
+            }
+            else
+            {
+                low = mid + 1;
+            }
+        }
+        if (arr[mid] <= arr[high])
+        {
+            // right sorted
+            if (target >= arr[mid] && target <= arr[high])
+            {
+                low = mid + 1;
+            }
+            else
+            {
+                high = mid - 1;
+            }
+        }
+    }
+    return -1;
+}
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+}
