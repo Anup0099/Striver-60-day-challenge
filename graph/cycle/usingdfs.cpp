@@ -8,17 +8,20 @@ using namespace std;
 bool dfscheck(vector<int> adj[], int node, vector<bool> &visited, int parent)
 {
     visited[node] = true;
-    for(int it:adj[node]){
-       if(node==parent){
-           continue;
-       }
-       if(visited[it]==true)
-       {
-        return true;
-       }
-       if(dfscheck(adj,it,visited,node)==true){
-           return true;
-       }
+    for (int it : adj[node])
+    {
+        if (node == parent)
+        {
+            continue;
+        }
+        if (visited[it] == true)
+        {
+            return true;
+        }
+        if (dfscheck(adj, it, visited, node) == true)
+        {
+            return true;
+        }
     }
     return false;
 }

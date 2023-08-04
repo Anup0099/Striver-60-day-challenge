@@ -1,28 +1,37 @@
 #include <bits/stdc++.h>
 using namespace std;
-int f(vector<vector<int>>&points,int ind,int days){
-    if(ind==0){
-        int maxi=0;
-        for(int task=0;task<3;task++){
-            maxi=max(maxi,points[ind][task]);
+int f(vector<vector<int>> &points, int days, int last)
+{
+    if (days == 0)
+    {
+        int maxi = 0;
+        for (int task = 0; task < 3; task++)
+        {
+            maxi = max(maxi, points[days][task]);
         }
         return maxi;
     }
-    int maxi=0;
-    for(int task=0;task<3;task++){
-        if(task!=last){
-            int points=points[day][task]+f(points,ind-1,task);
-            maxi= max(maxi,points);
+    int maxi = 0;
+    for (int task = 0; task < 2; task++)
+    {
+        if (task != last)
+        {
+            int points = points[days][task] + f(points, days - 1, task);
+            maxi = max(maxi, points);
         }
     }
     return maxi;
 }
-int ninjasTraining(int n,vector<vector<int>>&points){
-    int n=points.size();
-    int m= points[0].size();
-    int ind=0;
-    int days=0;
-    return f(point,n-1,3);
+int ninjasTraining(int n, vector<vector<int>> &points)
+{
+    int n = points.size();
+    int m = points[0].size();
+    int ind = 0;
+    int days = 0;
+    // return f(points, n - 1, 3);
+    // tabulation method
+
+
 }
 
 int main()

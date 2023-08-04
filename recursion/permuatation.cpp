@@ -22,7 +22,7 @@ void solve(vector<int> &ds, vector<int> &nums, vector<vector<int>> &ans, int feq
 }
 vector<vector<int>> permutate(vector<int> &nums)
 {
-    vector<vecotr<int>> &ans;
+    vector<vector<int>> &ans;
     vector<int> ds;
     int feq[nums.size()];
     for (int i = 0; i < nums.size(); i++)
