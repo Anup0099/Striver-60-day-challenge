@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 // print all permutation
 void solve(vector<int> &ds, vector<int> &nums, vector<vector<int>> &ans, int feq[])
 {

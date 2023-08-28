@@ -1,0 +1,1 @@
+dp[i] = min(jumpOne, jumpTwo);

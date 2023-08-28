@@ -1,26 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
-void solve(int ind, vector<int> &nums, vector<int> ds, <vector<int>> &ans)
+void solve(int ind, vector<int> &nums, vector<int> ds, vector<vector<int>> &ans)
 {
-    ans.push_back(ds);
-    for (int i = ind; i < nums.size(); i++)
+    if (ind == nums.size())
     {
-        if (i != ind and nums[i] == nums[i - 1])
-            continue;
-        ds.push_back(nums[i]);
-        solve(i + 1, nums, ds, ans);
-        ds.pop_back();
+        sort(ds.begin(), ds.end());
+        ans.push_back(ds);
+        return;
     }
+    ds.push_back(nums[ind]);
+    solve(ind + 1, nums, ds, ans);
+    ds.pop_back();
+    solve(ind + 1, nums, ds, ans);
 }
 
 vector<vector<int>> subsetSum2(vector<int> &nums)
 {
     int n = nums.size();
-    sort(nums.begin(), nums.end());
+    
     vector<vector<int>> ans;
+    set<vector<int>> s;
+
     vector<int> ds;
     solve(0, nums, ds, ans);
+    for (auto it = s.begin(); it != s.end(); it++)
+    {
+        ans.push_back(*it);
+    }
+
+    return ans;
 }
+
 int main()
 {
     ios_base::sync_with_stdio(false);

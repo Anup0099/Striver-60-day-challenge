@@ -1,29 +1,36 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int wordLadder(string startWord,string targetWord,vector<string>&wordList){
-    int n= startWord.length(),m= targetWord.length();
-    queue<pair<string,int>>q;
-    q.push({startWord,1});
-    unordered_set<int>st(wordList.begin(),wordList.end());
-    st.erase(startWord);
-    while(!q.empty()){
-        string word= q.front().first;
-        int steps= q.front().second;
+int wordLadder(string startWord, string targetWord, vector<string> &wordList)
+{
+    int n = wordList.size();
+    unordered_set<string> s(wordList.begin(), wordList.end());
+    queue<pair<string, int>> q;
+    q.push({startWord, 1});
+    while (!q.empty())
+    {
+        string first = q.front().first;
+        auto second = q.front().second;
         q.pop();
-        if(word==targetWord)return steps;
-
-        for(int i=0;i<word.size();i++){
-            char original= word[i];
-            for(char ch='a';ch<='z';ch++){
-                word[i]=ch;
-                if(st.find(ch)!=st.end()){
-                    q.push({word,steps+1});
-                    st.erase(word);
+        if(first == targetWord)
+        {
+            return second;
+        }
+        for (int i = 0; i < first.length(); i++)
+        {
+            char originalChar = first[i];
+            for (char ch = 'a'; ch <= 'z'; ch++)
+            {
+                first[i] = ch;
+                if (s.find(first) != s.end())
+                {
+                    s.erase(first);
+                    q.push({first, second + 1});
                 }
             }
-            word[i]=original;
+            first[i] = originalChar;
         }
+
     }
     return 0;
 }

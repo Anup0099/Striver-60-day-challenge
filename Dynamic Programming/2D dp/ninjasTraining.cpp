@@ -28,7 +28,7 @@ int ninjasTraining(int n, vector<vector<int>> &points)
     int m = points[0].size();
     int ind = 0;
     int days = 0;
-    // return f(points, n - 1, 3);
+    return f(points, n - 1, 3);
     // tabulation method
 
 

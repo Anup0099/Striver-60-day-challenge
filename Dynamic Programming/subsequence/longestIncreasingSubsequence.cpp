@@ -12,7 +12,7 @@ int solve(vector<int> &arr, int n, int ind, int prev_ind, vector<vector<int>> dp
     int take = 0;
     if (arr[prev_ind] <= arr[ind])
     {
-        take = 1 + solve(arr, n, ind + 1, prev_ind, dp);
+        take = 1 + solve(arr, n, ind + 1, ind, dp);
     }
     return dp[ind][prev_ind + 1] = max(take, nottake);
 }

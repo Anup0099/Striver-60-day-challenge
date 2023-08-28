@@ -22,6 +22,27 @@ vector<int> nextGreater(vector<int> arr)
     return arr;
 
     // optimized
+    int n=arr.size();
+    stack<int> s;
+    vector<int> v(n);
+
+    for(int i=n-1;i>=0;i--)
+    {
+        while(!s.empty() and s.top()<=arr[i])
+        {
+            s.pop();
+        }
+        if(s.empty())
+        {
+            v[i]=-1;
+        }
+        else
+        {
+            v[i]=s.top();
+        }
+        s.push(arr[i]);
+    }
+    return v;
 }
 int main()
 {

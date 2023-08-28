@@ -2,24 +2,43 @@
 using namespace std;
 vector<int> twoPointers(vector<int> &arr, int target)
 {
-    int n = arr.size();
-    int left = 0, right = n - 1;
-    while (left < right)
+    // int n = arr.size();
+    // unordered_map<int, int> mp;
+    // for (int i = 0; i < n; i++)
+    // {
+    //     if (mp.find(target - arr[i]) != mp.end())
+    //     {
+    //         return {mp[target - arr[i]], i};
+    //     }
+    //     else
+    //     {
+    //         mp[arr[i]] = i;
+    //     }
+    // }
+    // return {};
+    vector<pair<int, int>> v;
+    for (int i = 0; i < arr.size(); i++)
     {
-        if (arr[left] + arr[right] > target)
+        v.push_back({arr[i], i});
+    }
+    sort(v.begin(), v.end());
+    int i = 0, j = arr.size() - 1;
+    while (i < j)
+    {
+        if (v[i].first + v[j].first == target)
         {
-            right--;
+            return {v[i].second, v[j].second};
         }
-        else if (arr[left] + arr[right] < target)
+        else if (v[i].first + v[j].first > target)
         {
-            left++;
+            j--;
         }
         else
         {
-            return {left, right};
+            i++;
         }
     }
-    return {-1, -1};
+    return {};
 }
 int main()
 {

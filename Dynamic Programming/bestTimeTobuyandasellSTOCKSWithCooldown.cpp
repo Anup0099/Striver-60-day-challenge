@@ -24,6 +24,7 @@ int maxProfit(vector<int> &prices)
 {
     int n = prices.size();
     bool buy = true;
+    vector<vector<int>>dp(n,vector<int>(2,-1));
     return solve(prices, 0, n - 1, buy);
 }
 int main()

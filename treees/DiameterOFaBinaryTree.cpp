@@ -9,7 +9,7 @@ struct TreeNode{
         left=NULL;
         right=NULL;
     }
-}
+};
 int maxDepth(TreeNode *root){
     if(root==NULL)return 0;
     int lh= maxDepth(root->left);
@@ -23,6 +23,7 @@ int diameter(TreeNode *root){
     int maxi= max(maxi,lh+rh+1);
     int left= diameter(root->left);
     int right= diameter(root->right);
+    return max(maxi,max(left,right));
     
 }
 int main()
