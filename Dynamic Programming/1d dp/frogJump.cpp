@@ -37,7 +37,8 @@ int frogJump(vector<int> heights)
     // cout << endl;
     return dp[n - 1];
     // SPACE OPTIMIZED TC O(N) SC O(1)
-    // int n = heights.size();
+
+       // int n = heights.size();
     // int dp[2];
     // dp[0] = 0;
     // int prev = 0, prev2 = 0;

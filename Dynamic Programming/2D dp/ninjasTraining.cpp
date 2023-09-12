@@ -24,14 +24,7 @@ int f(vector<vector<int>> &points, int days, int last)
 }
 int ninjasTraining(int n, vector<vector<int>> &points)
 {
-    int n = points.size();
-    int m = points[0].size();
-    int ind = 0;
-    int days = 0;
-    return f(points, n - 1, 3);
-    // tabulation method
-
-
+    return f(points, n - 1, 2);
 }
 
 int main()
@@ -39,4 +32,20 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
+    int n;
+    cin >> n;
+    while (n--)
+    {
+        int a, b, c;
+        cin >> a >> b >> c;
+        vector<vector<int>> points(a, vector<int>(3, 0));
+        for (int i = 0; i < a; i++)
+        {
+            for (int j = 0; j < 3; j++)
+            {
+                cin >> points[i][j];
+            }
+        }
+        cout << ninjasTraining(a, points) << endl;
+    }
 }

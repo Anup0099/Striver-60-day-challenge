@@ -30,7 +30,9 @@ bool canCross(vector<int> &stones)
     int n = stones.size();
     return solve(stones, 0, 0, n);
 }
-int main() {
-    vector<int> stones = {0,1,3,5,6,8,12,17};
+
+int main()
+{
+    vector<int> stones = {0, 1, 3, 5, 6, 8, 12, 17};
     cout << canCross(stones);
 }
