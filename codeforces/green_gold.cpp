@@ -13,27 +13,25 @@ int main()
         {
             cin >> arr[i];
         }
-        vector<int> diff(n);
+        vector<pair<int, int>> v;
         for (int i = 0; i < arr.size(); i++)
         {
-            diff[i] = arr[i] - (i + 1);
+            v.push_back({arr[i], i});
         }
-        sort(diff.begin(), diff.end());
-        // for(auto it:diff){
-        //     cout<<it<<" ";
-        // }
-        set<int> s;
-        for (int i = 0; i < diff.size(); i++)
+        sort(begin(v), end(v));
+        vector<int> ans(n);
+        for (int i = 0; i < v.size(); i++)
         {
-            s.insert(diff[i]);
+            // smallest value in v should maximum permutation
+            //  1 2 3 4 5
+            ans[v[i].second] = n - i;
         }
-        int m = s.size();
-        for (int i = 1; i <= m; i++)
+        for (int i = 0; i < ans.size(); i++)
         {
-            cout << i << " ";
+            cout << ans[i] << " ";
         }
         cout << endl;
-
+        // sabse chote element ko maximum permutation dena hai
         // he want to find a permutation b of length n
         // such that the number of distinct numbers in the element-wise
         // difference array a and permutation b is maximized

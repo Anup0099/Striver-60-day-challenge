@@ -20,4 +20,8 @@ vector<int> countBits(int n)
     }
     return ans;
 }
+string maximumOddBinaryNumber(string s)
+{
+   
+}
 int main() {}
