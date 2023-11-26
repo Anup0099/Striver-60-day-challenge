@@ -6,21 +6,31 @@ import java.util.ArrayList;
 //what is the question asking? It is asking to encrypt the given character by the given key and return the encrypted character as the output
 // solution approach: we will use the ascii values of the characters to solve this problem
 
-class A {
-}
-
-class B extends A {
-}
-
-class C extends B {
-}
-
+/**
+ * soul
+ */
 public class soul {
-    public static void main(String[] args) {
-        List<? super B> l1 = new ArrayList<A>();
-        List<? extends B> l2 = new ArrayList<B>();
-        l1.add(new B());
-        l1.add(new C());
 
+    public int divide(int a, int b) {
+        int c = -1;
+        try {
+            c = a / b;
+        } catch (Exception e) {
+            System.out.println("Exception  ");
+        } finally {
+            System.out.println("finally ");
+        }
+
+        return c;
+    }
+
+    // output will be 2
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        int b = sc.nextInt();
+        soul obj = new soul();
+        System.out.println(obj.divide(a, b));
+        sc.close();
     }
 }

@@ -47,19 +47,55 @@ int longestCommonSubsequence(string s, string t, int i, int j)
     {
         return max(longestCommonSubsequence(s, t, i + 1, j), longestCommonSubsequence(s, t, i, j + 1));
     }
-
-
 }
-int longestCommonPalindrome(string s)
+bool solves(int i, int j, string s)
 {
     int n = s.length();
-    string t = s;
-    reverse(t.begin(), t.end());
-    return longestCommonSubsequence(s, t, 0, 0);
+    if (i >= j)
+        return 1;
+    while (i <= j)
+    {
+        if (s[i] == s[j])
+        {
+            i++;
+            j--;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    return true;
+}
+string longestCommonPalindrome(string s)
+{
+    int n = s.length();
+    int maxLength = INT_MIN;
+    int startPoint = 0;
+    memset(dp, -1, sizeof(dp));
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = i; j < n; j++)
+        {
+            if (solves(i, j, s))
+            {
+                if (j - i + 1 > maxLength)
+                {
+                    maxLength = j - i + 1;
+                    startPoint = i;
+                }
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+    return s.substr(startPoint, maxLength);
 }
 int main()
 {
     string s;
     cin >> s;
-    cout<<longestCommonPalindrome(s);
+    cout << longestCommonPalindrome(s);
 }
