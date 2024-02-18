@@ -31,6 +31,8 @@ bool isSymmertric(TreeNode *root1, TreeNode *root2)
         return false;
     }
 }
+
+
 int main()
 {
     ios_base::sync_with_stdio(false);

@@ -43,4 +43,24 @@ int maxPathSum(TreeNode *root)
     maxSum(root, maxi);
     return maxi;
 }
+int maxi;
+int solve(TreeNode *root)
+{
+    if (root == NULL)
+        return;
+
+    int left = solve(root->left);
+    int right = solve(root->right);
+    int answer_milgaye = left + right + root->val;
+    int koi_ek_acha = max(left, right) + root->val;
+    int only_root_acha = root->val;
+    maxi = max({maxi, answer_milgaye, koi_ek_acha, only_root_acha});
+    return max({koi_ek_acha, only_root_acha});
+}
+int maxSUmpath(TreeNode *root)
+{
+    maxi = INT_MIN;
+    solve(root);
+    return maxi;
+}
 int main() {}

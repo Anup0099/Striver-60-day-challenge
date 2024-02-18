@@ -23,4 +23,24 @@ int longestSubarrayOfk(vector<int> &nums, int k)
     }
     return maxLen;
 }
-int main() {}
+int longestSubarraySum(vector<int> &nums, int k)
+{
+    int n = nums.size();
+    int i = 0, j = 0;
+    int count = 0;
+    int sum = 0;
+    int maxi = INT_MIN;
+    while (j < n)
+    {
+    //    for negetive numbers
+        
+    }
+    return maxi;
+    // time complexity: O(n) because we are using two pointers and we are traversing the array only once so time complexity is O(n) if sum>k then we are removing elements from the start of the array so time complexity is O(n) so overall time complexity is O(n)
+}
+int main()
+{
+    vector<int> nums = {10, 5, 2, 7, 1, 9};
+    int k = 15;
+    cout << longestSubarraySum(nums, k);
+}

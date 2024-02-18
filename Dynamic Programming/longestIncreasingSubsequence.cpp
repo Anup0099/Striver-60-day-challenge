@@ -26,6 +26,14 @@ int longestIncreasingSubsequence(vector<int> &nums)
     vector<vector<int>> dp(nums.size(), vector<int>(nums.size(), -1));
     return solve(ind, prev, nums, dp);
 }
+int lengthOfLIS(vector<int> &nums)
+{
+    int n = nums.size();
+    vector<int> dp(n, 0);
+    
+   
+
+}
 int main()
 {
     vector<int> nums = {10, 9, 2, 5, 3, 7, 101, 18};

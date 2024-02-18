@@ -33,6 +33,28 @@ string convert(string s, int numRows)
     }
     return s;
 }
+
+string convert(string s, int r)
+{
+    int n = s.length();
+    vector<string> ans(r);
+    int currow = 0, mod = 1;
+    for (int i = 0; i < n; i++)
+    {
+        ans[currow].push_back(s[i]);
+        if (currow == 0)
+            mod = 1;
+        if (currow == r - 1)
+            mod = -1;
+        currow += mod;
+    }
+    s.clear();
+    for (auto it : ans)
+    {
+        s += it;
+    }
+    return s;
+}
 int main()
 {
 

@@ -11,33 +11,31 @@ int main()
         cin >> n;
         string s;
         cin >> s;
-        vector<int> count;
-        int x = 0;
-        count.push_back(0);
-
-        for (int i = 0; i < n;)
+        int count = 0;
+        int numberOfOperation = 0;
+        for (int i = 0; i < n; i++)
         {
-            if (s[i] == '#')
+            if (s[i] == '.')
             {
-                i++;
-                continue;
+                count++;
+                numberOfOperation++;
             }
-            while (i < n and s[i] == '.')
+            else
             {
-                i++;
-                x++;
+                count = 0;
             }
-            count.push_back(x);
-            x = 0;
+            if (count >= 3)
+            {
+                break;
+            }
         }
-        sort(count.begin(), count.end());
-        if (count.back() < 3)
+        if (count >= 3)
         {
-            cout << accumulate(count.begin(), count.end(), 0) << endl;
+            cout << 2 << endl;
         }
         else
         {
-            cout << 2 << endl;
+            cout << numberOfOperation << endl;
         }
     }
 }

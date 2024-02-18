@@ -2,23 +2,38 @@
 using namespace std;
 int longestSubstringWithoutrepeatingCharacters(string s)
 {
+    // int n = s.length();
+    // int ans = 0;
+    // unordered_set<char> st;
+    // int i = 0, j = 0;
+    // while (i < n and j < n)
+    // {
+    //     if (st.find(s[j]) != st.end())
+    //     {
+    //         st.erase(s[i]);
+    //         ++i;
+    //     }
+    //     else
+    //     {
+    //         st.insert(s[j]);
+    //         ++j;
+    //         ans = max(ans, j - i);
+    //     }
+    // }
+    // return ans;
+    unordered_map<char, int> mp;
     int n = s.length();
-    int ans = 0;
-    unordered_set<char> st;
     int i = 0, j = 0;
-    while (i < n and j < n)
+    int ans = 0;
+    while (j < n)
     {
-        if (st.find(s[j]) != st.end())
+        if (mp.find(s[j]) != mp.end())
         {
-            st.erase(s[i]);
-            ++i;
+            i = max(mp[s[j]], i);
         }
-        else
-        {
-            st.insert(s[j]);
-            ++j;
-            ans = max(ans, j - i);
-        }
+        mp[s[j]] = j + 1;
+        ans = max(ans, j - i + 1);
+        j++;
     }
     return ans;
 }
@@ -55,7 +70,7 @@ int longestUniqueCharacters(string s)
             mp[s[i]]--;
             i++;
         }
-        len= max(len,j-i+1);
+        len = max(len, j - i + 1);
         j++;
     }
     return len;
