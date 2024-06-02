@@ -46,17 +46,49 @@ using namespace std;
 // Additional constraint on the input: the total length of all strings s
 //  doesn't exceed 2⋅105
 // .
-int minTotalCost(string s) {
-    int n = s.length();
-    
-}
 
-int main() {
+int main()
+{
     // Example usage
-    int t;cin>>t;
-    while(t--){
-        int n;cin>>n;
-        string s;cin>>s;
-        cout<<minTotalCost(s)<<endl;
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        string s;
+        cin >> s;
+        int n = s.size();
+        int count0 = 0, count1 = 0;
+        for (auto it : s)
+        {
+            if (it == '0')
+            {
+                count0++;
+            }
+            else
+            {
+                count1++;
+            }
+        }
+        if (count0 == count1)
+        {
+            cout << 0 << endl;
+            continue;
+        }
+        for (int i = 0; i < n; i++)
+        {
+            if (count1 > 0 && s[i] == '0')
+            {
+                count1--;
+            }
+            else if (count0 > 0 && s[i] == '1')
+            {
+                count0--;
+            }
+            else if (count0 == 0 || count1 == 0)
+            {
+                cout << n - i << endl;
+                break;
+            }
+        }
     }
 }

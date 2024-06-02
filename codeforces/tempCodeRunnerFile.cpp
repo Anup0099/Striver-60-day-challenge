@@ -1,18 +1,18 @@
-int n;
-        cin >> n;
-        string s;
-        cin >> s;
-        string f;
-        cin >> f;
-        int count1 = 0, count2 = 0;
-        for (int i = 0; i < n; i++)
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    int count = 0;
+    for (int i = 1; i < n; i++)
+    {
+        if (s[i] == s[i - 1] or s[i] == s[i + 1])
         {
-            if (s[i] == '1')
-            {
-                count1++;
-            }
-            else if (f[i] == '1')
-            {
-                count2++;
-            }
+            count++;
         }
+    }
+    cout << count << endl;
+}

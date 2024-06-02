@@ -1,0 +1,23 @@
+/*
+ॐ भूर्भुवः स्व तत्सवितुर्वरेण्यं
+भर्गो देवस्य धीमहि
+धियो यो नः प्रचोदयात॥
+*/
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int t;
+    cin >> t;
+    while (t--)
+    {
+        int a, b;
+        cin >> a >> b;
+        int aa = max(a, b);
+        int bb = min(a, b);
+        cout << bb << " " << aa;
+    }
+}

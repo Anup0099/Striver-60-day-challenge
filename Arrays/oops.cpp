@@ -9,7 +9,7 @@ public:
              << "\n";
     }
 };
-class B : public A
+class B : private A
 {
 public:
     void saymyname()
@@ -18,11 +18,41 @@ public:
              << "\n";
     }
 };
+class c: private B
+{
+    public:
+    void saymyname()
+    {
+        cout << "gaurav"
+             << "\n";
+    }
+};
+class Animal{
+    public:
+   virtual void speak()
+    {
+        cout<<"g is animal";
+    }
+};
+class Dog:public Animal{
+    public:
+    void speak() override
+    {
+        cout<<"dog bark";
+    }
+};
+
 int main() {
     A obj;
     obj.saymyname();
     B obj2;
     obj2.saymyname();
+    c obj3;
+    obj3.saymyname();
+    Dog d;
+    d.speak();
+    Animal a;
+    a.speak();
 }
 
 

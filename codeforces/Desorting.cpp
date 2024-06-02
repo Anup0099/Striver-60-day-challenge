@@ -29,22 +29,25 @@ int main()
         int n;
         cin >> n;
 
-
         vector<int> v(n);
-        for (int i = 1; i <= n; i++)
+        for (int i = 0; i < n; i++)
         {
             cin >> v[i];
         }
-        int mini = INT_MAX;
-        for (int i = 1; i < n; i++)
+        if (!is_sorted(v.begin(), v.end()))
         {
-            mini = min(mini, v[i + 1] - v[i]);
-        }
-        if (mini < 0)
             cout << 0 << endl;
+        }
         else
         {
-            cout << mini / 2 + 1 << endl;
+
+            int diff = 1e9;
+            for (int i = 1; i < n; i++)
+            {
+                diff = min(diff, abs(v[i - 1] - v[i]));
+            }
+            int ans = diff / 2 + 1;
+            cout << ans << endl;
         }
     }
 }

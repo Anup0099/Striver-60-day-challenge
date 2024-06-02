@@ -7,10 +7,9 @@ long long power(long long a, long long b)
         return 1;
     long long x = power(a, b / 2);
     long long ans = 1;
-    if (b % 2)
+    if (b % 2 == 1)
     {
-        ans = (x * x) % mod;
-        ans = (ans * a) % mod;
+        ans = (x * x * a) % mod;
     }
     else
     {

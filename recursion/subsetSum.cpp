@@ -1,30 +1,50 @@
 #include <bits/stdc++.h>
 using namespace std;
-void solve(vector<int> arr, int n, int ind, int sum, vector<int> &ans)
+// void solve(vector<int> arr, int n, int ind, int sum, vector<int> &ans)
+// {
+//     // if (ind == n)
+//     // {
+//     //     ans.push_back(sum);
+//     //     return;
+//     // }
+//     // sum += arr[ind];
+//     // solve(arr, n, ind + 1, sum, ans);
+//     // sum -= arr[ind];
+//     // solve(arr, n, ind + 1, sum, ans);
+//     if (ind == n)
+//     {
+//         ans.push_back(sum);
+//         return;
+//     }
+//     solve(arr, n, ind + 1, sum + arr[ind], ans);
+//     solve(arr, n, ind + 1, sum, ans);
+// }
+// vector<int> subsetsum(vector<int> arr, int n)
+// {
+//     int sum = 0;
+//     vector<int> ans;
+//     solve(arr, n, 0, sum, ans);
+//     return ans;
+// }
+bool solve(vector<int> &ans, int ind, int target)
 {
-    // if (ind == n)
-    // {
-    //     ans.push_back(sum);
-    //     return;
-    // }
-    // sum += arr[ind];
-    // solve(arr, n, ind + 1, sum, ans);
-    // sum -= arr[ind];
-    // solve(arr, n, ind + 1, sum, ans);
-    if (ind == n)
+    int n = ans.size();
+    if (ind == 0)
+        return (ans[0] == target);
+    if (target == 0)
+        return true;
+    bool nottake = solve(ans, n - 1, target);
+    bool take = false;
+    if (ans[ind] <= target)
     {
-        ans.push_back(sum);
-        return;
+        take = solve(ans, n - 1, target - ans[ind]);
     }
-    solve(arr, n, ind + 1, sum + arr[ind], ans);
-    solve(arr, n, ind + 1, sum, ans);
+    return take or nottake;
 }
-vector<int> subsetsum(vector<int> arr, int n)
+bool subsetSum(vector<int> &arr, int target)
 {
-    int sum = 0;
-    vector<int> ans;
-    solve(arr, n, 0, sum, ans);
-    return ans;
+    int n = arr.size();
+    return solve(arr, n, target);
 }
 void f(vector<int> nums, int ind, vector<int> &temp, vector<vector<int>> &ans)
 {
@@ -55,7 +75,6 @@ int main()
     cout.tie(NULL);
     vector<int> arr = {2, 3};
     int n = arr.size();
-    vector<int> ans = subsetsum(arr, n);
-    for (auto i : ans)
-        cout << i << " ";
+    
+    
 }

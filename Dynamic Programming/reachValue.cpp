@@ -1,21 +1,37 @@
 #include <bits/stdc++.h>
 using namespace std;
 int mod = 1e9 + 7;
-int solve(long long target, long long i)
+// int solve(long long target, long long i)
+// {
+//     if (i == target)
+//         return 1;
+//     else if (i > target)
+//         return 0;
+//     else if (i < target)
+//     {
+//         int a = solve(target, i * 10);
+//         int b = solve(target, i * 20);
+//         return a || b;
+//     }
+
+//     return 0;
+// }
+bool solve(long long n, long long &curr)
 {
-    if (i == target)
-        return 1;
-    else if (i > target)
-        return 0;
-    else if (i < target)
+    if (curr > n)
     {
-        int a = solve(target, i * 10);
-        int b = solve(target, i * 20);
-        return max(a, b);
+        return false;
     }
-    // int a = solve(target / 10, i * 10);
-    // int b = solve(target / 20, i * 20);
-    // return max(a, b);
+    if (curr == n)
+        return true;
+    curr = curr * 10;
+    bool ans = false;
+    ans |= solve(n, curr);
+    curr = curr / 10;
+    curr = curr * 20;
+    ans |= solve(n, curr);
+    curr = curr / 20;
+    return ans;
 }
 int main()
 {

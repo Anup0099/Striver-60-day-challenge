@@ -3,7 +3,7 @@ using namespace std;
 int compress(vector<char> &chars)
 {
     int n = chars.size();
-   
+
     map<char, int> m;
     for (int i = 0; i < n; i++)
     {
@@ -13,7 +13,7 @@ int compress(vector<char> &chars)
 
     for (auto it : m)
     {
-        ans += it.first; 
+        ans += it.first;
         if (it.second > 1)
         {
             ans += to_string(it.second);
@@ -33,11 +33,41 @@ int compress(vector<char> &chars)
 
     return chars.size();
 }
+int compress2(vector<char> &chars)
+{
+    int n = chars.size();
+    int index = 0, i = 0;
+    while (i < n)
+    {
+        int count = 0;
+        char curr_char = chars[i];
+        while (i < n and chars[i] == curr_char)
+        {
+            count++;
+            i++;
+        }
+
+        chars[index] = curr_char;
+        index++;
+
+        if (count > 1)
+        {
+            string count_str = to_string(count);
+            for (auto &it : count_str)
+            {
+                chars[index] = it;
+                index++;
+            }
+        }
+        
+    }
+    return index;
+}
 int main()
 {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
     vector<char> chars = {'a', 'a', 'b', 'b', 'c', 'c', 'c'};
-    cout << compress(chars);
+    cout << compress2(chars);
 }

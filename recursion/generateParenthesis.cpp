@@ -22,24 +22,26 @@ bool isValid(string &s)
     }
     return (count == 0);
 }
-vector<string> solve(int n, string s)
+void solve(int n, string s)
 {
     if (s.size() == 2 * n)
     {
         if (isValid(s))
         {
             ans.push_back(s);
+            return;
         }
     }
-    string open = s + "(";
-    solve(n, open);
-    string close = s + ")";
-    solve(n, close);
+    s.push_back('(');
+    solve(n, s);
+    s.pop_back();
+    s.push_back(')');
+    solve(n, s);
+    s.pop_back();
 }
 vector<string> generateParenthesis(int n)
 {
-    string s;
-
+    string s="";
     solve(n, s);
     return ans;
 }
@@ -51,5 +53,7 @@ int main()
     int n = 3;
     vector<string> ans = generateParenthesis(n);
     for (auto x : ans)
+    {
         cout << x << endl;
+    }
 }

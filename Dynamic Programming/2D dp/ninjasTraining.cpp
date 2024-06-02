@@ -1,23 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
-int f(vector<vector<int>> &points, int days, int last)
+int f(vector<vector<int>>points, int days, int last)
 {
     if (days == 0)
     {
         int maxi = 0;
         for (int task = 0; task < 3; task++)
         {
-            maxi = max(maxi, points[days][task]);
+            if (task != last)
+            {
+
+                maxi = max(maxi, points[days][task]);
+            }
         }
         return maxi;
     }
     int maxi = 0;
-    for (int task = 0; task < 2; task++)
+    for (int task = 0; task <=2; task++)
     {
         if (task != last)
         {
-            int points = points[days][task] + f(points, days - 1, task);
-            maxi = max(maxi, points);
+            int temp = points[days][task] + f(points, days - 1, task);
+            maxi = max(maxi, temp);
         }
     }
     return maxi;

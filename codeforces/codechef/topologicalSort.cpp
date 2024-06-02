@@ -1,13 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
-void dfs(int node, vector<int> adj[], vector<bool> visit)
+void dfs(int node, vector<bool> &visit, stack<int> &st, vector<int> arr[])
 {
-    visit[u] = true;
-    for (auto it : adj[node])
+    visit[node] = true;
+    for (auto it : arr[node])
     {
         if (!visit[it])
         {
-            dfs(it, adj, visit);
+            dfs(it, visit, st, arr);
         }
     }
     st.push(node);
@@ -31,4 +31,24 @@ vector<int> toposort(int v, vector<int> arr[])
     }
     return a;
 }
-int main() {}
+int main() 
+{
+    int v=6;
+    int e=6;
+    // give example of graph
+    vector<int> arr[v];
+    arr[5].push_back(2);
+    arr[5].push_back(0);
+    arr[4].push_back(0);
+    arr[4].push_back(1);
+    arr[2].push_back(3);
+    arr[3].push_back(1);
+    vector<int> ans=toposort(v,arr);
+    for(auto it:ans)
+    {
+        cout<<it<<" ";
+    }
+    return 0;
+    
+
+}
